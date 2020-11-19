@@ -1,6 +1,7 @@
 package com.blacklane.feeds.model.repo
 
 import com.blacklane.feeds.api.FeedsService
+import com.blacklane.feeds.assertItems
 import com.blacklane.feeds.model.vo.Feed
 import com.blacklane.shared.lifecycle.ViewState
 import com.nhaarman.mockitokotlin2.doReturn

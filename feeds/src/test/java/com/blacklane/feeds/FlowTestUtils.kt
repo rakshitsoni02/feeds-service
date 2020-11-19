@@ -1,4 +1,4 @@
-package com.blacklane.feeds.model.repo
+package com.blacklane.feeds
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.take

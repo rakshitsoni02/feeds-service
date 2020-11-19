@@ -42,6 +42,7 @@ class DefaultFeedsRepository @Inject constructor(
         emit(ViewState.loading<List<Feed>>())
         try {
             // 2. Try to fetch fresh feeds from web if exist
+            // It should be parse in different VO(when it'a complex json) for now it's used common
             val latestFeeds = feedsService.getFeeds().body()
             cachedFeeds.clear()
             cachedFeeds.addAll(latestFeeds ?: emptyList())
