@@ -7,7 +7,6 @@ import com.blacklane.shared.lifecycle.DataObserver
 import com.blacklane.shared.lifecycle.MainDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,14 +17,13 @@ class FeedsViewModel @Inject constructor(
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) {
     private val feedsObserver: DataObserver<List<Feed>> = DataObserver()
-    var job: Job? = null
+
     fun getFeedsObserver(): DataObserver<List<Feed>> {
         return feedsObserver
     }
 
     fun syncFeeds() {
-        job?.start()
-        job = externalScope.launch(mainDispatcher) {
+        externalScope.launch(mainDispatcher) {
             feedsRepository.getFeedsArticles().collect {
                 feedsObserver.value = it
             }

@@ -5,17 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/f_container_feeds_listing"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        android:layout_height="match_parent">
 
-    <!-- Progress and empty views -->
-    <include layout="@layout/progress_layout" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/f_container_feeds_listing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <include
         layout="@layout/empty_layout"
+        tools:visibility="visible" />
+
+    <!-- Progress and empty views -->
+    <include
+        layout="@layout/progress_layout"
         tools:visibility="visible" />
 </RelativeLayout>

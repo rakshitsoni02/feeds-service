@@ -42,6 +42,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supportVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "androidx.cardview:cardview:$cardViewVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
 
     //kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"

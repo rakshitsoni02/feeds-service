@@ -43,10 +43,11 @@ class FeedsListingFragment : BaseFragment() {
             },
             data = ::updateFeeds,
             error = {
+                swipeRefreshLayout.isRefreshing = false
                 toast(it.text(requireActivity()))
             }
         ))
-
+        swipeRefreshLayout.setOnRefreshListener { viewModel.syncFeeds() }
 
         fun refreshState() {
             when (adapter.itemCount) {
@@ -71,6 +72,7 @@ class FeedsListingFragment : BaseFragment() {
     }
 
     private fun updateFeeds(feeds: List<Feed>) {
+        swipeRefreshLayout.isRefreshing = false
         (f_container_feeds_listing.adapter as FeedsAdapter).submitList(feeds)
     }
 
