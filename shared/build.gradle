@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+android {
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    //Support Libraries
+    implementation "androidx.appcompat:appcompat:$supportVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+    implementation "com.google.android.material:material:$googleMaterial"
+
+    //Networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //Hilt processors
+    implementation "com.google.dagger:hilt-android:$hiltAndroidVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltAndroidVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltViewModelVersion"
+}

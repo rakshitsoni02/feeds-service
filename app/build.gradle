@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+
+    defaultConfig {
+        applicationId "com.blacklane.feeds"
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    api project(':feeds')
+    api project(':shared')
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    // KTX
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+
+    // Support Libraries
+    implementation "androidx.appcompat:appcompat:$supportVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtxVersion"
+
+    //Networking
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    //Dagger with Hilt
+    implementation "com.google.dagger:hilt-android:$hiltAndroidVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltAndroidVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltViewModelVersion"
+}

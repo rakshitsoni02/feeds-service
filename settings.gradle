@@ -1,0 +1,4 @@
+include ':feeds'
+include ':shared'
+include ':app'
+rootProject.name = "FeedsListing"

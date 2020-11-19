@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_vertical"
+    android:background="?colorPrimary"
+    android:paddingHorizontal="@dimen/margin_horizontal"
+    android:paddingVertical="@dimen/padding_half">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tb_title_text"
+        style="@style/RecipeArticle.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name"
+        tools:text="Test Title" />
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/tb_icon_action_1"-->
+<!--        android:layout_width="@dimen/icon_size"-->
+<!--        android:layout_height="@dimen/icon_size"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginEnd="@dimen/margin_horizontal"-->
+<!--        app:srcCompat="@drawable/ic_add_24x24" />-->
+</RelativeLayout>

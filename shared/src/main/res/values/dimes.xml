@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_horizontal">16dp</dimen>
+    <dimen name="padding_half">8sp</dimen>
+    <dimen name="margin_vertical">16dp</dimen>
+    <dimen name="normal_padding">10dp</dimen>
+    <dimen name="d4">32dp</dimen>
+
+
+    <!-- List style -->
+    <dimen name="card_elevation">6dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="textview_size_normal">12sp</dimen>
+    <dimen name="image_thumbnail">144dp</dimen>
+</resources>
