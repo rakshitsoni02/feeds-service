@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.blacklane.feeds.R
 import com.blacklane.feeds.model.vo.Feed
@@ -15,6 +16,7 @@ import com.blacklane.shared.utils.view.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.empty_layout.*
 import kotlinx.android.synthetic.main.f_feeds_list.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.android.synthetic.main.progress_layout.*
 import javax.inject.Inject
 
@@ -48,6 +50,9 @@ class FeedsListingFragment : BaseFragment() {
             }
         ))
         swipeRefreshLayout.setOnRefreshListener { viewModel.syncFeeds() }
+        searchBoxFeeds.addTextChangedListener {
+            viewModel.onSearchTextChanges(it.toString())
+        }
 
         fun refreshState() {
             when (adapter.itemCount) {

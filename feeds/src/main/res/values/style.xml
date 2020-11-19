@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="RecipeArticle" />
+    <style name="FeedArticle" />
 
-    <style name="RecipeArticle.View">
+    <style name="FeedArticle.View">
         <item name="android:layout_marginTop">@dimen/normal_padding</item>
         <item name="android:layout_marginStart">@dimen/card_margin</item>
         <item name="android:layout_marginEnd">@dimen/card_margin</item>
         <item name="android:layout_marginBottom">@dimen/card_elevation</item>
     </style>
 
-    <style name="RecipeArticle.Title">
+    <style name="FeedArticle.Title">
         <item name="android:maxLines">1</item>
         <item name="android:background">@color/color_transparent</item>
         <item name="android:textAllCaps">true</item>
@@ -19,7 +19,7 @@
         <item name="android:textSize">@dimen/textview_size_normal</item>
     </style>
 
-    <style name="RecipeArticle.Description">
+    <style name="FeedArticle.Description">
         <item name="android:maxLines">3</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:padding">@dimen/normal_padding</item>

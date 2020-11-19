@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/RecipeArticle.View"
+    style="@style/FeedArticle.View"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="@dimen/card_elevation">
@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/tv_feed_title"
-            style="@style/RecipeArticle.Title"
+            style="@style/FeedArticle.Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:text="Elon Musk says Tesla can't yet launch in India" />
@@ -22,10 +22,10 @@
 
         <TextView
             android:id="@+id/tv_feed_description"
-            style="@style/RecipeArticle.Description"
+            style="@style/FeedArticle.Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="ABC Recipe" />
+            tools:text="ABC Feeds" />
 
     </LinearLayout>
 

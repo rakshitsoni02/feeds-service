@@ -27,6 +27,7 @@ interface FeedsRepository {
      */
     fun getFeedsArticles(): Flow<ViewState<List<Feed>>>
 
+    fun searchFeedForQuery(textQuery: CharSequence): Flow<ViewState<List<Feed>>>
 }
 
 @Singleton
@@ -34,22 +35,35 @@ class DefaultFeedsRepository @Inject constructor(
     private val feedsService: FeedsService
 ) : FeedsRepository {
 
+    private val cachedFeeds: MutableList<Feed> = mutableListOf()
+
     override fun getFeedsArticles(): Flow<ViewState<List<Feed>>> = flow {
         // 1. Start with loading
         emit(ViewState.loading<List<Feed>>())
-        val latestFeeds: List<Feed>?
         try {
             // 2. Try to fetch fresh feeds from web if exist
-            latestFeeds = feedsService.getFeeds().body()
+            val latestFeeds = feedsService.getFeeds().body()
+            cachedFeeds.clear()
+            cachedFeeds.addAll(latestFeeds ?: emptyList())
         } catch (e: Throwable) {
-            emit(ViewState.error(StringProvider.of(R.string.error_label)))
+            emit(ViewState.error(StringProvider.of(R.string.feed_error_label)))
             return@flow
         }
-        // 3. update latest feeds to UI
-        emit(ViewState.success(latestFeeds ?: emptyList()))
+        // 3. update latest feeds to UI(cached feeds always single source of truth)
+        emit(ViewState.success(cachedFeeds.toList()))
     }
         .flowOn(Dispatchers.IO)
 
+    override fun searchFeedForQuery(textQuery: CharSequence): Flow<ViewState<List<Feed>>> = flow {
+        // 1. Start with loading
+        emit(ViewState.loading<List<Feed>>())
+        //2. search for feeds in cache
+        val result = cachedFeeds.filter {
+            it.title.contains(textQuery, ignoreCase = true)
+        }
+        // 3.update resultant feeds
+        emit(ViewState.success(result))
+    }
 }
 
 

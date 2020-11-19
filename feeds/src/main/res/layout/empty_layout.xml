@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
         android:padding="@dimen/padding_half"
-        android:text="@string/no_data" />
+        android:text="@string/feed_no_data" />
 
 
 </RelativeLayout>

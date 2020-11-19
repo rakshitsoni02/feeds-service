@@ -2,7 +2,6 @@ package com.blacklane.shared.app
 
 import androidx.fragment.app.Fragment
 import com.blacklane.shared.R
-import dagger.hilt.android.AndroidEntryPoint
 
 
 /**

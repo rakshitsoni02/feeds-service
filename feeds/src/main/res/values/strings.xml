@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="no_data">No Feeds Available</string>
-    <string name="error_label">Something went wrong ¯\_(ツ)_/¯</string>
+    <string name="feed_no_data">No Feeds Available</string>
+    <string name="feed_error_label">Something went wrong ¯\_(ツ)_/¯</string>
+    <string name="feed_hint_search_feeds">Search Feeds</string>
+    <string name="feed_clicked">You Clicked: %S</string>
 </resources>

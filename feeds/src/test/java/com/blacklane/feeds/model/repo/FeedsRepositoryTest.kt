@@ -34,8 +34,8 @@ class FeedsRepositoryTest {
     fun `get feeds articles from web when internet available`() = runBlocking {
         // GIVEN
         val fetchedFeeds = listOf(
-            Feed(title = "title 1",body = "body 1",userId = -1 , id = -1),
-            Feed(title = "title 2",body = "body 2",userId = -2 , id = -2)
+            Feed(title = "title 1", body = "body 1", userId = -1, id = -1),
+            Feed(title = "title 2", body = "body 2", userId = -2, id = -2)
         )
 
         val response = Response.success(fetchedFeeds)
@@ -49,4 +49,13 @@ class FeedsRepositoryTest {
             ViewState.success(fetchedFeeds)
         )
     }
+
+    @Test
+    fun `get feeds articles from cache for given search title text`() = runBlocking {
+        feedsRepository.searchFeedForQuery("title").assertItems(
+            ViewState.loading(),
+            ViewState.success(emptyList())
+        )
+    }
+
 }

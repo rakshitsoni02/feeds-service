@@ -1,7 +1,9 @@
 package com.blacklane.feeds.view
 
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -32,9 +34,20 @@ class FeedsAdapter : ListAdapter<Feed, FeedsAdapter.FeedItemHolder>(DIFF_CALLBAC
         /**
          * Binds the UI with the data and handles clicks
          */
-        fun bind(recipe: Feed) = with(itemView) {
-            tv_feed_title.text = recipe.title
-            tv_feed_description.text = recipe.body
+        fun bind(feed: Feed) = with(itemView) {
+            tv_feed_title.text = feed.title
+            tv_feed_description.text = feed.body
+            setOnClickListener {
+                context.showDialog(feed)
+            }
+        }
+
+        private fun Context.showDialog(feed: Feed) {
+            val builder: AlertDialog.Builder? = AlertDialog.Builder(this)
+            builder?.setMessage(feed.title)
+                ?.setTitle(getString(R.string.feed_clicked, feed.id.toString()))
+            val dialog: AlertDialog? = builder?.create()
+            dialog?.show()
         }
     }
 
